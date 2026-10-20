@@ -4,7 +4,7 @@ APScore is an atomic-resolution protein–ligand scoring function built around a
 
 APScore combines the **IADP model** with a **line-of-sight steric occlusion filter** and an **Atomic Context-Aware Network (ACA-Net)**. This design focuses the model on physically accessible local contacts, reduces reliance on molecular scaffold memorization, and provides interpretable atom-level interaction parameters for structure-based drug discovery.
 
-## 🌟 Key Features
+## Key Features
 * **Physics-guided IADP model:** Learns continuous interatomic distance probability distributions rather than directly learning an unconstrained black-box scoring function, providing an explicit representation of distance-dependent interactions.
 * **Local atomic representation with ACA-Net:** Decomposes protein–ligand complexes into contact atom pairs and their local chemical contexts, reducing dependence on global molecular topology and supporting out-of-distribution generalization.
 * **Line-of-sight steric filtering:** Identifies and excludes spatially adjacent atom pairs that are geometrically occluded by intervening atoms, restricting the interaction representation to physically accessible contacts.
@@ -12,7 +12,7 @@ APScore combines the **IADP model** with a **line-of-sight steric occlusion filt
 
 ---
 
-## 📂 Project Structure
+## Project Structure
 
 ```text
 Apscore/
@@ -46,7 +46,7 @@ Apscore/
 └── README.md
 ```
 
-## 🛠️ Installation
+## Installation
 
 We recommend using [Conda](https://docs.conda.io/en/latest/miniconda.html) to manage the software environment and dependencies, including RDKit and pdb2pqr.
 
@@ -64,7 +64,7 @@ conda activate apscore
 
 ---
 
-## 📊 Dataset Preparation
+## Dataset Preparation
 
 You can either download the preprocessed datasets directly or process the raw data from scratch.
 
@@ -102,7 +102,7 @@ python feats/dataset2inter_feats.py     --input_dirs /path/to/PDBind/general_set
 
 ---
 
-## 🚀 Model Training
+## Model Training
 
 APScore is trained using a joint loss comprising Huber loss and a Pearson correlation penalty. Ensure that the preprocessed data, whether downloaded or generated locally, is placed in the `dataset/` directory.
 
@@ -125,7 +125,7 @@ sbatch model/train.sh
 
 ---
 
-## 🔬 Inference & Applications
+## Inference & Applications
 
 During inference, APScore applies a distance-based collision penalty when an interacting atom pair falls below the specified 0.55σ cutoff, helping suppress physically implausible conformations in structure-based applications.
 
@@ -152,13 +152,13 @@ python inference/screening.py     -pb /path/to/protein_base/     -lb /path/to/li
 
 ---
 
-## 📄 Input Formats
+## Input Formats
 - **Proteins:** `.pdb` format containing three-dimensional coordinates and added hydrogen atoms.
 - **Ligands:** `.mol2` or `.sdf` format containing valid three-dimensional conformers with explicit hydrogens.
 
 ---
 
-## 📜 Citation & Paper
+## Citation & Paper
 
 The manuscript describing APScore and its application to the discovery of novel STING transmembrane ion channel modulators is currently under review.
 
@@ -168,10 +168,10 @@ Citation information will be updated upon publication.
 
 ---
 
-## ⚖️ License
+## License
 This project is licensed under the [MIT License](LICENSE).
 
 ---
 
-## 🤝 Acknowledgements
-APScore was developed at the College of Biology, Hunan University. We acknowledge the use of the [PDBbind](http://www.pdbbind.org.cn/) dataset and [pdb2pqr](https://github.com/Electrostatics/pdb2pqr) for biomolecular structure preparation.
+## Acknowledgements
+APScore was developed at the College of Biology, Hunan University. We acknowledge the use of the [PDBbind](https://www.pdbbind-plus.org.cn/) dataset and [pdb2pqr](https://github.com/Electrostatics/pdb2pqr) for biomolecular structure preparation.
